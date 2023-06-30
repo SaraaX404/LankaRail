@@ -1,0 +1,1 @@
+export {default as  SearchTrain} from './SearchTrain.component'

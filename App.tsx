@@ -3,9 +3,11 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
-import {LoginScreen, SplashScreen, RegisterScreen} from './Screens'
+import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain} from './Screens'
 import {NavigationContainer} from '@react-navigation/native';
 import {LogBox} from 'react-native'
+import TrainSearchResult from './Screens/TrainSearchResult/TrainSearchResult';
+import { BookingSeats } from './Screens/BookingSeats';
 const Stack = createStackNavigator();
 
 LogBox.ignoreLogs([
@@ -20,6 +22,9 @@ export default function App() {
       <Stack.Screen name="Splash" component={SplashScreen}/>
       <Stack.Screen name="Login" component={LoginScreen}/>
       <Stack.Screen name="Register" component={RegisterScreen}/>
+      <Stack.Screen name="SearchTrain" component={SearchTrain}/>
+      <Stack.Screen name="TrainSearchResult" component={TrainSearchResult}/>
+      <Stack.Screen name="BookingSeats" component={BookingSeats}/>
     </Stack.Navigator>
     </NavigationContainer>
     

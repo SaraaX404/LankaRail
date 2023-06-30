@@ -1,0 +1,1 @@
+export {default as TrainSearchResult} from './TrainSearchResult.component'
