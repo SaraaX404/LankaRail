@@ -24,7 +24,7 @@ export default() => {
     </View>
     {/* Seats */}
 
-    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 5 }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 5, }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <View style={[styles.SeatContainer, globalShadowBox, { width: 30, height: 30 }]}>
                     <Seat color={0}></Seat>
@@ -43,7 +43,7 @@ export default() => {
 
     
 
-    
+    <View style={{ backgroundColor: GlobalBackgroundColors.primaryColor}}>
     <ScrollView>
                     <View style={{ backgroundColor: GlobalBackgroundColors.primaryColor, flex: 1 }}>
                          
@@ -95,6 +95,7 @@ export default() => {
                         </View>
                     </View>
                 </ScrollView>
+                </View>
     
 </View>
   );
