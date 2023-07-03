@@ -1,43 +1,47 @@
- import { View,Image,TouchableOpacity ,SafeAreaView, TextInput,KeyboardAvoidingView,Pressable,Text,Button  } from 'react-native'
- import { GlobalBackgroundColors, GlobalBackgroundTextColors ,globalShadowBox} from '../../Styles/global';
- import { useNavigation } from '@react-navigation/native'
-import {nav} from '../../Models'
- 
- import React,{ useState } from 'react'
- import DropDownPicker from 'react-native-dropdown-picker';
- 
- import { Feather } from "@expo/vector-icons";
- import DatePicker from "react-native-date-ranges";
-  
-  
- 
+import {
+  View,
+  Image,
+  KeyboardAvoidingView,
+  Pressable,
+  Text
+} from "native-base";
+import { SafeAreaView } from "react-native";
 
- export default() => {
-    const {navigate} = useNavigation<nav>()
-    const navigateTrainSearchResult =()=>{
-        navigate('TrainSearchResult')
-    } 
-    
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
+import { useNavigation } from "@react-navigation/native";
+import { nav } from "../../Models";
 
-    const [open1, setOpen1] = useState(false);
-    const [value1, setValue1] = useState(null);
-    const [items, setItems] = useState([
-      {label: 'Matara', value: '1'},
-      {label: 'Colombo Fort', value: '2'}
-    ]);
+import React, { useState } from "react";
+import DropDownPicker from "react-native-dropdown-picker";
 
-    const [open3, setOpen3] = useState(false);
-    const [value3, setValue3] = useState(null);
-    const [open4, setOpen4] = useState(false);
-    const [value4, setValue4] = useState(null);
-    const [items1, setItems1] = useState([
-      {label: '5.00 AM', value: '1'},
-      {label: '9.00 AM', value: '2'}
-    ]);
+import { Feather } from "@expo/vector-icons";
+import DatePicker from "react-native-date-ranges";
 
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+export default () => {
+  const { navigate } = useNavigation<nav>();
+  const navigateTrainSearchResult = () => {
+    navigate("TrainSearchResult");
+  };
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+
+  const [open1, setOpen1] = useState(false);
+  const [value1, setValue1] = useState(null);
+  const [items, setItems] = useState([
+    { label: "Matara", value: "1" },
+    { label: "Colombo Fort", value: "2" },
+  ]);
+
+  const [open3, setOpen3] = useState(false);
+  const [value3, setValue3] = useState(null);
+  const [open4, setOpen4] = useState(false);
+  const [value4, setValue4] = useState(null);
+  const [items1, setItems1] = useState([
+    { label: "5.00 AM", value: "1" },
+    { label: "9.00 AM", value: "2" },
+  ]);
+
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -52,81 +56,77 @@ import {nav} from '../../Models'
     hideDatePicker();
   };
 
-    return (
-     
-   
-  <SafeAreaView  style={{
-    flex: 1,
-    backgroundColor: "white",
-    padding: 10,
-    alignItems: "center",
-  }}>
-<KeyboardAvoidingView>
-    <View
+  return (
+    <SafeAreaView
       style={{
-        justifyContent: "center",
+        flex: 1,
+        backgroundColor: "white",
+        padding: 10,
         alignItems: "center",
-        marginTop: 50,
-        borderColor: "#003580",
       }}
     >
-      <Image style={{ width: 200, height: 120 }} source={require('../../assets/Images/front.jpg')} />
-      <Text style={{ color: "#003580", fontSize: 17, fontWeight: "700" }}>
-        Search Available Trains
-      </Text>
-        
-       
-    </View>
+      <KeyboardAvoidingView>
+        <View
+          justifyContent={"center"}
+          alignItems={"center"}
+          marginTop={50}
+          borderColor={"#003580"}
+        >
+          <Image
+            width={200}
+            height={120}
+            source={require("../../assets/Images/front.jpg")}
+            alt="image"
+          />
+          <Text color={"#003580"} fontSize={17} fontWeight={"700"}>
+            Search Available Trains
+          </Text>
+        </View>
 
-    <View style={{ marginTop: 50 }}>
-      <View>
-        
-         
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          setValue={setValue}
-          setItems={setItems}
-          placeholder="Select start destination"
-          dropDownDirection="TOP"
-          style={{
-            width: 350}}
-         />
-      </View>
-       
-      <View style={{ marginTop: 15 }}>
-         
-
-      <DropDownPicker
-          open={open1}
-          value={value1}
-          items={items}
-          setOpen={setOpen1}
-          setValue={setValue1}
-          setItems={setItems}
-          placeholder="Select end destination"
-          dropDownDirection="TOP"
-          style={{
-            width: 350}}
-         />
-      </View>
-
-      <View style={{ marginTop: 15 }}>
-        
-
-       {/* Selected Dates */}
-       <Pressable
+        <View mt={50}>
+          <View>
+            <DropDownPicker
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
+              placeholder="Select start destination"
+              dropDownDirection="TOP"
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 10,
-                paddingHorizontal: 10,
-                borderColor: "#003580",
-                borderWidth: 2,
-                paddingVertical: 15,
+                width: 350,
               }}
+            />
+          </View>
+
+          <View mt={15}>
+            <DropDownPicker
+              open={open1}
+              value={value1}
+              items={items}
+              setOpen={setOpen1}
+              setValue={setValue1}
+              setItems={setItems}
+              placeholder="Select end destination"
+              dropDownDirection="TOP"
+              style={{
+                width: 350,
+              }}
+            />
+          </View>
+
+          <View mt={15}>
+            {/* Selected Dates */}
+            <Pressable
+              flexDirection={"row"}
+              alignItems={"center"}
+              px={15}
+              borderColor={"#003580"}
+              borderWidth={2}
+              pt={3}
+              pb={3}
+              style={{ gap: 10 }}
             >
               <Feather name="calendar" size={24} color="black" />
               <DatePicker
@@ -155,69 +155,64 @@ import {nav} from '../../Models'
                   },
                 }}
                 selectedBgColor="#0047AB"
-                 
                 allowFontScaling={false}
                 placeholder={"Select Your Dates"}
                 mode={"range"}
               />
             </Pressable>
+          </View>
+          <View mt={15}>
+            <DropDownPicker
+              open={open3}
+              value={value3}
+              items={items1}
+              setOpen={setOpen3}
+              setValue={setValue3}
+              setItems={setItems1}
+              placeholder="Select Start Time"
+              dropDownDirection="TOP"
+              style={{
+                width: 350,
+              }}
+            />
+          </View>
+          <View mt={15}>
+            <DropDownPicker
+              open={open4}
+              value={value4}
+              items={items1}
+              setOpen={setOpen4}
+              setValue={setValue4}
+              setItems={setItems1}
+              placeholder="Select End Time"
+              dropDownDirection="TOP"
+              style={{
+                width: 350,
+              }}
+            />
+          </View>
+        </View>
 
-      </View>
-      <View style={{ marginTop: 15 }}>
-      <DropDownPicker
-          open={open3}
-          value={value3}
-          items={items1}
-          setOpen={setOpen3}
-          setValue={setValue3}
-          setItems={setItems1}
-          placeholder="Select Start Time"
-          dropDownDirection="TOP"
-          style={{
-            width: 350}}
-         />
-      </View>
-      <View style={{ marginTop: 15 }}>
-      <DropDownPicker
-          open={open4}
-          value={value4}
-          items={items1}
-          setOpen={setOpen4}
-          setValue={setValue4}
-          setItems={setItems1}
-          placeholder="Select End Time"
-          dropDownDirection="TOP"
-          style={{
-            width: 350}}
-         />
-      </View>
-    
-       
-      
-
-
-    </View>
-
-    <Pressable
-    onPress={navigateTrainSearchResult}
-      style={{
-        width: 200,
-        backgroundColor: "#003580",
-        padding: 15,
-        borderRadius: 7,
-        marginTop: 50,
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-    >
-      <Text style={{textAlign:"center",color:"white",fontSize:17,fontWeight:"bold"}}>Search</Text>
-    </Pressable>
-
-     
-  </KeyboardAvoidingView>
-</SafeAreaView>
-    
-   );
- }
- 
- 
+        <Pressable
+          onPress={navigateTrainSearchResult}
+          width={200}
+          backgroundColor={"#003580"}
+          padding={15}
+          borderRadius={7}
+          marginTop={50}
+          marginLeft={"auto"}
+          marginRight={"auto"}
+        >
+          <Text
+            textAlign={"center"}
+            color={"white"}
+            fontSize={17}
+            fontWeight={"bold"}
+          >
+            Search
+          </Text>
+        </Pressable>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+};
