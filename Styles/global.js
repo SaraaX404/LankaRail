@@ -15,7 +15,7 @@ const GlobalBackgroundColors=
 const GlobalBackgroundTextColors=
 {
     primaryColor:"#FFFFFF", // White color (used over blue one)
-    secondaryColor:"#FFFFFF", // White color (over yellow)
+    secondaryColor:"#000000", // White color (over yellow)
     ternaryColor:"black", // black color (used with text box)
     textBoxColor:"#585858" // Text color
 }

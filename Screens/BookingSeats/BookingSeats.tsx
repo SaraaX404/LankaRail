@@ -1,6 +1,7 @@
  
 import React from 'react'
-import { View, Button, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Button, Text, Image, ScrollView,  } from 'native-base';
+import {TouchableOpacity, StyleSheet} from 'react-native'
 
 // Styles
 import { GlobalBackgroundColors, globalShadowBox, primaryButton, GlobalBackgroundTextColors } from '../../Styles/global';
@@ -10,52 +11,52 @@ export default() => {
   return (
     <View   >
     {/* train Detail */}
-    <View style={[globalShadowBox, { marginTop: 10, marginBottom: 10, marginLeft: 'auto', marginRight: 'auto', flexDirection: 'column', justifyContent: 'space-between', width: '90%', padding: 5, backgroundColor: GlobalBackgroundColors.ternaryColor }]}>
-        <Text style={{ marginLeft: 'auto', marginRight: 'auto', fontSize: 25, fontWeight: 'bold' }}>Rs.450</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 3 }}>
-            <Text style={{ marginTop: 'auto', marginBottom: 'auto', fontSize: 20 }}>Matara</Text>
-            <Image style={{ width: 50, height: 40 }} source={require('../../assets/Images/train1.jpg')} />
-            <Text style={{ marginTop: 'auto', marginBottom: 'auto', fontSize: 20 }}>Colombo Fort</Text>
+    <View style={globalShadowBox} mt={10}  mb={10} mx={'auto'}  flexDirection={'column'} justifyContent={'space-between'}  width={'90%'}  p={5} backgroundColor={GlobalBackgroundColors.ternaryColor}>
+        <Text mx={'auto'} fontSize={25} fontWeight={'bold'}>Rs.450</Text>
+        <View flexDirection={'row'} justifyContent={'space-between'} mt={3}>
+            <Text mt={'auto'} mb={'auto'} fontSize={20}>Matara</Text>
+            <Image width={'50px'} height={'40px'} source={require('../../assets/Images/train1.jpg')} alt={'image'} />
+            <Text marginTop={'auto'} marginBottom={'auto'} fontSize={20}>Colombo Fort</Text>
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 3, paddingLeft: 30, paddingRight: 30 }}>
-            <Text style={{ fontSize: 10 }}>5.00 AM</Text>
-            <Text style={{ fontSize: 10 }}>9.00AM</Text>
+        <View flexDirection={'row'} justifyContent={'space-between'} mt={3}  pl={30}  pr={30}>
+            <Text fontSize={'10px'} >5.00 AM</Text>
+            <Text fontSize={'10px'} >9.00AM</Text>
         </View>
     </View>
     {/* Seats */}
 
-    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 5, }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <View flexDirection={'row'}  justifyContent={'space-around'} marginTop={'5px'}>
+            <View flexDirection={'row'} alignItems={'center'} >
                 <View style={[styles.SeatContainer, globalShadowBox, { width: 30, height: 30 }]}>
                     <Seat color={0}></Seat>
                     
                 </View>
-                <Text style={{ marginLeft: 10 }}>Available</Text>
+                <Text ml={'10px'}>Available</Text>
             </View>
             
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View flexDirection={'row'} alignItems={'center'}>
                 <View style={[styles.SeatContainer, globalShadowBox, { width: 30, height: 30 }]}>
                     <Seat color={-1}></Seat>
                 </View>
-                <Text style={{ marginLeft: 10 }}>Booked</Text>
+                <Text ml={'10px'}>Booked</Text>
             </View>
         </View>
 
     
 
-    <View style={{ }}>
+    <View mt={'10px'}>
     <ScrollView>
-                    <View style={{     }}>
+                    <View>
                          
                         {/* Seats Goes Here */}
-                        <View style={[globalShadowBox, { width: '90%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 20, flex: 1, backgroundColor: GlobalBackgroundColors.ternaryColor }]}>
+                        <View width={'90%'}  mx={'auto'} mb={20} flex={1} backgroundColor={GlobalBackgroundColors.ternaryColor} style={[globalShadowBox]}>
                             {/* <SeatInfo /> */}
-                            <Text style={{ color: 'red', textAlign: 'center', marginTop: 5, marginBottom: 5, fontWeight: 'bold' }}>   </Text>
+                            <Text color={'red'} textAlign={'center'} marginTop={'5px'} marginBottom={'5px'} fontWeight={'bold'} >   </Text>
 
 
                             {/* Seats*/}
                             <ScrollView>
-                                <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                                <View flexDirection={'row'} flexWrap={'wrap'}>
                                     {/* {trainSeatDataComponent} */}
                                       <View style={[styles.SeatContainer, globalShadowBox, { width: 30, height: 30 }]}>
                                        <Seat color={0}></Seat>
@@ -91,8 +92,8 @@ export default() => {
 
 
                             {/* Butons */}
-                            <View style={{ marginBottom: 10 }}>
-                                <TouchableOpacity   style={[  { marginLeft: 'auto', marginRight: 'auto' }]}><Text style={{ textAlign: 'center', color: GlobalBackgroundTextColors.secondaryColor }}>Book Now</Text></TouchableOpacity>
+                            <View mt={'20px'} mb={'10px'} >
+                                <TouchableOpacity   style={[  { marginLeft: 'auto', marginRight: 'auto' }]}><Text textAlign={'center'} color={GlobalBackgroundTextColors.secondaryColor}>Book Now</Text></TouchableOpacity>
                             </View>
                         </View>
                     </View>
