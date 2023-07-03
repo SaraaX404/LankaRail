@@ -16,10 +16,12 @@ const TrainSearchResult = () => {
             {/* Bus Detail */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 25, color: GlobalBackgroundColors.primaryColor }}>Ruhunu Kumari</Text>
+               
                 <Text style={{ fontWeight: 'bold', fontSize: 25, color: GlobalBackgroundColors.primaryColor }}>Rs.450</Text>
             </View>
             {/* Traveling Detail */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+            
                 <Text>Matara</Text>
                 <Image style={{ width: 50, height: 40 }} source={require('../../assets/Images/train.png')} />
                 <Text>Colombo Fort</Text>

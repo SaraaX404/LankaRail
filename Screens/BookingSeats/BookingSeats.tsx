@@ -43,9 +43,9 @@ export default() => {
 
     
 
-    <View style={{ backgroundColor: GlobalBackgroundColors.primaryColor}}>
+    <View style={{ }}>
     <ScrollView>
-                    <View style={{ backgroundColor: GlobalBackgroundColors.primaryColor, flex: 1 }}>
+                    <View style={{     }}>
                          
                         {/* Seats Goes Here */}
                         <View style={[globalShadowBox, { width: '90%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 20, flex: 1, backgroundColor: GlobalBackgroundColors.ternaryColor }]}>
@@ -80,8 +80,10 @@ export default() => {
                                       </View>
                                       <View style={[styles.SeatContainer, globalShadowBox, { width: 30, height: 30 }]}>
                                        <Seat color={0}></Seat>
-                                       
                                       
+                                      </View>
+                                      <View style={[styles.SeatContainer, globalShadowBox, { width: 30, height: 30 }]}>
+                                       <Seat color={-1}></Seat>
                     
                                       </View>
                                 </View>
@@ -110,4 +112,5 @@ const styles = StyleSheet.create({
         borderRadius: 10
     }
 });
+
  
