@@ -16,11 +16,11 @@ export default ()=>{
     } 
 
     return(
-        <Box>
-        <Button onPress={navigateLogin}>
+        <Box mt={'130%'}>
+        <Button onPress={navigateLogin} h="50px" mx={'2%'}>
              Login
         </Button>
-        <Button onPress={navigateRegister}>
+        <Button onPress={navigateRegister} mt={'2%'} h="50px" mx={'2%'} >
              Get Started
         </Button>
      </Box>

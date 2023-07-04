@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain} from './Screens'
 import {NavigationContainer} from '@react-navigation/native';
 import {LogBox} from 'react-native'
-import TrainSearchResult from './Screens/TrainSearchResult/TrainSearchResult';
+import {TrainSearchResult} from './Screens/TrainSearchResult';
 import { BookingSeats } from './Screens/BookingSeats';
 const Stack = createStackNavigator();
 
