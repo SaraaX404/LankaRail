@@ -3,7 +3,7 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
-import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain} from './Screens'
+import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain,HomeScreen} from './Screens'
 import {NavigationContainer} from '@react-navigation/native';
 import {LogBox} from 'react-native'
 import {TrainSearchResult} from './Screens/TrainSearchResult';
@@ -19,12 +19,27 @@ export default function App() {
    <NativeBaseProvider>
     <NavigationContainer>
     <Stack.Navigator initialRouteName='Splash'>
-      <Stack.Screen name="Splash" component={SplashScreen}/>
-      <Stack.Screen name="Login" component={LoginScreen}/>
-      <Stack.Screen name="Register" component={RegisterScreen}/>
-      <Stack.Screen name="SearchTrain" component={SearchTrain}/>
-      <Stack.Screen name="TrainSearchResult" component={TrainSearchResult}/>
-      <Stack.Screen name="BookingSeats" component={BookingSeats}/>
+      <Stack.Screen name="Splash" component={SplashScreen}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="Login" component={LoginScreen} options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="Register" component={RegisterScreen}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="Home" component={HomeScreen}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="SearchTrain" component={SearchTrain}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="TrainSearchResult" component={TrainSearchResult}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="BookingSeats" component={BookingSeats}  options={{
+              headerShown: false,
+            }}/>
     </Stack.Navigator>
     </NavigationContainer>
     

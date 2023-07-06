@@ -11,9 +11,12 @@ import {
 } from "../../Styles/global";
 //Components
 import Seat from "../../assets/Images/seats";
+import { DefaultLayout } from "../../Components";
 export default () => {
   return (
-    <View>
+    <DefaultLayout>
+        <View>
+      
       {/* train Detail */}
       <View
         style={globalShadowBox}
@@ -200,6 +203,8 @@ export default () => {
         </ScrollView>
       </View>
     </View>
+      </DefaultLayout>
+    
   );
 };
 
