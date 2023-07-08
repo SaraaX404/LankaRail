@@ -73,9 +73,9 @@ export default () => {
           borderColor={"#003580"}
         >
           <Image
-            width={200}
+            width={120}
             height={120}
-            source={require("../../assets/Images/front.jpg")}
+            source={require("../../assets/Images/train1.png")}
             alt="image"
           />
           <Text color={"#003580"} fontSize={17} fontWeight={"700"}>

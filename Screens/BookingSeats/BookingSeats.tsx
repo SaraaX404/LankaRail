@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Button, Text, Image, ScrollView } from "native-base";
+import { View, Button, Text, Image, ScrollView , Pressable} from "native-base";
 import { TouchableOpacity, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { nav } from "../../Models";
 
 // Styles
 import {
@@ -12,6 +14,11 @@ import {
 //Components
 import Seat from "../../assets/Images/seats";
 export default () => {
+
+  const { navigate } = useNavigation<nav>();
+  const confirmbooking = () => {
+    navigate("confirmbooking");
+  };
   return (
     <View>
       {/* train Detail */}
@@ -196,10 +203,36 @@ export default () => {
                 </TouchableOpacity>
               </View>
             </View>
+            
+            <Pressable
+          onPress={confirmbooking}
+          width={200}
+          backgroundColor={"#003580"}
+          padding={15}
+          borderRadius={7}
+          marginTop={50}
+          marginLeft={"auto"}
+          marginRight={"auto"}
+        >
+          <Text
+            textAlign={"center"}
+            color={"white"}
+            fontSize={17}
+            fontWeight={"bold"}
+          >
+            Confirm Booking
+          </Text>
+        </Pressable>
           </View>
         </ScrollView>
       </View>
     </View>
+<<<<<<< Updated upstream
+=======
+    
+      </DefaultLayout>
+    
+>>>>>>> Stashed changes
   );
 };
 

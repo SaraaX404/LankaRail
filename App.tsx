@@ -5,9 +5,13 @@ import { NativeBaseProvider } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain} from './Screens'
 import {NavigationContainer} from '@react-navigation/native';
-import {LogBox} from 'react-native'
+import {LogBox, Settings} from 'react-native'
 import {TrainSearchResult} from './Screens/TrainSearchResult';
 import { BookingSeats } from './Screens/BookingSeats';
+import { ConfirmBooking } from './Screens/ConfrmBooking';
+import { JourneyDetails } from './Screens/JourneyDetails';
+import SettingsComponent from './Screens/Settings/Settings.component';
+import EditProfileComponent from './Screens/EditProfile/EditProfile.component';
 const Stack = createStackNavigator();
 
 LogBox.ignoreLogs([
@@ -19,12 +23,48 @@ export default function App() {
    <NativeBaseProvider>
     <NavigationContainer>
     <Stack.Navigator initialRouteName='Splash'>
+<<<<<<< Updated upstream
       <Stack.Screen name="Splash" component={SplashScreen}/>
       <Stack.Screen name="Login" component={LoginScreen}/>
       <Stack.Screen name="Register" component={RegisterScreen}/>
       <Stack.Screen name="SearchTrain" component={SearchTrain}/>
       <Stack.Screen name="TrainSearchResult" component={TrainSearchResult}/>
       <Stack.Screen name="BookingSeats" component={BookingSeats}/>
+=======
+      <Stack.Screen name="Splash" component={SplashScreen}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="Login" component={LoginScreen} options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="Register" component={RegisterScreen}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="Home" component={HomeScreen}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="SearchTrain" component={SearchTrain}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="TrainSearchResult" component={TrainSearchResult}  options={{
+              headerShown: false,
+            }}/>
+      <Stack.Screen name="BookingSeats" component={BookingSeats}  options={{
+              headerShown: false,
+            }}/>
+              <Stack.Screen name="confirmbooking" component={ConfirmBooking}  options={{
+                headerShown: false,
+              }}/>
+              <Stack.Screen name="JourneyDetails" component={JourneyDetails}  options={{
+                headerShown: false,
+              }}/>
+              <Stack.Screen name="Settings" component={SettingsComponent}  options={{
+                headerShown: false,
+              }}/>
+              <Stack.Screen name="EditProfile" component={EditProfileComponent}  options={{
+                headerShown: false,
+              }}/>
+>>>>>>> Stashed changes
     </Stack.Navigator>
     </NavigationContainer>
     

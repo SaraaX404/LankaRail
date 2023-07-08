@@ -1,18 +1,18 @@
-import { Box, Text ,Button, Input} from 'native-base'
+import { Box, Text ,Button, Input,View,Pressable} from 'native-base'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {nav} from '../../Models'
 import { useKeyboardVisible } from '../../hooks'
- 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default ()=>{
     const {navigate} = useNavigation<nav>()
 
     const keyBoardVisible = useKeyboardVisible()
 
-
-    const navigateSearchtrain =()=>{
-       navigate('SearchTrain')
+ 
+    const navigatelogin =()=>{
+       navigate('Login')
     } 
     return(
     <Box flex={1}>
@@ -20,14 +20,47 @@ export default ()=>{
         <Text fontSize={'24px'}>Welcome to Lanka Rail</Text>
         </Box>
         <Box flex={7} mx={'3%'}>
-            <Input placeholder='fullname' h="40px"/>
-            <Input placeholder='address' h="40px" mt='2%'/>
-            <Input placeholder='telephone' h="40px" mt='2%'/>
-            <Input placeholder='email' h="40px" mt='2%'/>
-            <Input placeholder='password' h="40px" mt='2%'/>
-        <Button onPress={navigateSearchtrain} h={'50px'} mt={'2%'}>
-           Sign Up
-        </Button>
+            <View>
+                
+                 <Input placeholder='fullname' h="40px"/>
+            </View>
+            
+           <View>
+           <Input placeholder='address' h="40px" mt='2%'/>
+           </View>
+           <View>
+           <Input placeholder='telephone' h="40px" mt='2%'/>
+           </View>
+           <View>
+           
+           <Input placeholder='email' h="40px" mt='2%'/>
+           </View>
+           <View>
+           <Input placeholder='password' h="40px" mt='2%'/>
+           </View>
+            
+           
+            
+           
+           <Pressable
+         onPress={navigatelogin}
+         width={200}
+         backgroundColor={"#003580"}
+         padding={15}
+         borderRadius={7}
+         marginTop={50}
+         marginLeft={"auto"}
+         marginRight={"auto"}
+       >
+         <Text
+           textAlign={"center"}
+           color={"white"}
+           fontSize={17}
+           fontWeight={"bold"}
+         >
+          SignUp
+         </Text>
+       </Pressable>
         </Box>
         
     </Box>
