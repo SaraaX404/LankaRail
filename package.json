@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@react-icons/all-files": "^4.1.0",
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
     "@types/react": "~18.0.27",
     "expo": "~48.0.18",
+    "expo-constants": "~14.2.1",
     "expo-status-bar": "~1.4.4",
     "moment": "^2.29.4",
     "native-base": "^3.4.28",
@@ -34,8 +37,7 @@
     "react-native-svg": "13.4.0",
     "react-native-webview": "^13.2.2",
     "tailwind-styled-components": "^2.2.0",
-    "typescript": "^4.9.4",
-    "expo-constants": "~14.2.1"
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

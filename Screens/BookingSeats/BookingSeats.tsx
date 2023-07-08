@@ -13,6 +13,7 @@ import {
 } from "../../Styles/global";
 //Components
 import Seat from "../../assets/Images/seats";
+import { DefaultLayout } from "../../Components";
 export default () => {
 
   const { navigate } = useNavigation<nav>();
@@ -20,7 +21,9 @@ export default () => {
     navigate("confirmbooking");
   };
   return (
-    <View>
+    <DefaultLayout>
+        <View>
+      
       {/* train Detail */}
       <View
         style={globalShadowBox}
@@ -227,12 +230,9 @@ export default () => {
         </ScrollView>
       </View>
     </View>
-<<<<<<< Updated upstream
-=======
     
       </DefaultLayout>
     
->>>>>>> Stashed changes
   );
 };
 

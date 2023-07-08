@@ -15,6 +15,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 import { Feather } from "@expo/vector-icons";
 import DatePicker from "react-native-date-ranges";
+import { DefaultLayout } from "../../Components";
 
 export default () => {
   const { navigate } = useNavigation<nav>();
@@ -57,7 +58,8 @@ export default () => {
   };
 
   return (
-    <SafeAreaView
+    <DefaultLayout>
+<SafeAreaView
       style={{
         flex: 1,
         backgroundColor: "white",
@@ -214,5 +216,7 @@ export default () => {
         </Pressable>
       </KeyboardAvoidingView>
     </SafeAreaView>
+    </DefaultLayout>
+    
   );
 };

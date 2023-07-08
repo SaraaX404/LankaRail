@@ -1,4 +1,4 @@
-import { Text, View, Image } from "native-base";
+import { Text, View, Image, Box,Heading } from "native-base";
 import { TouchableOpacity } from "react-native";
 import React from "react";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../../Styles/global";
 import { useNavigation } from "@react-navigation/native";
 import { nav } from "../../Models";
+import { Booking, DefaultLayout } from "../../Components";
 const TrainSearchResult = () => {
   const { navigate } = useNavigation<nav>();
 
@@ -15,121 +16,29 @@ const TrainSearchResult = () => {
     navigate("BookingSeats");
   };
   return (
-    <View>
-      <TouchableOpacity
-        onPress={navigateBookingSeats}
-        style={[
-          globalShadowBox,
-          {
-            width: "90%",
-            marginLeft: "auto",
-            marginRight: "auto",
-            backgroundColor: "white",
-            borderRadius: 30,
-            padding: 10,
-            marginTop: 30,
-          },
-        ]}
-      >
-        {/* Bus Detail */}
-        <View
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-          mt={"10px"}
-        >
-          <Text
-            fontWeight={"bold"}
-            fontSize={25}
-            color={GlobalBackgroundColors.primaryColor}
-          >
-            Ruhunu Kumari
-          </Text>
+    <DefaultLayout>
+  <View flex={1}>
+      <Box flex={1} backgroundColor={'#f5f5fa'} flexDirection={'row'} alignItems={'center'} justifyContent={'center'} mt={'9%'}>
+      <Text fontSize="18px" >Results</Text>
 
-          <Text
-            fontWeight={"bold"}
-            fontSize={25}
-            color={GlobalBackgroundColors.primaryColor}
-          >
-            Rs.450
-          </Text>
-        </View>
-        {/* Traveling Detail */}
-        <View
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-          mt={"10px"}
-        >
-          <Text>Matara</Text>
-          <Image
-            style={{ width: 50, height: 40 }}
-            source={require("../../assets/Images/train.png")}
-            alt={"image"}
-          />
-          <Text>Colombo Fort</Text>
-        </View>
-        {/* Time Detail */}
-        <View
-          flexDirection="row"
-          justifyContent="space-between"
-          marginTop={"10px"}
-        >
-          <Text>5.00 Am</Text>
-          <Text>9.00Am</Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[
-          globalShadowBox,
-          {
-            width: "90%",
-            marginLeft: "auto",
-            marginRight: "auto",
-            backgroundColor: "white",
-            borderRadius: 30,
-            padding: 10,
-            marginTop: 30,
-          },
-        ]}
-      >
-        {/* Bus Detail */}
-        <View flexDirection="row" justifyContent="space-between" mt={"10px"}>
-          <Text
-            fontWeight={"bold"}
-            fontSize={25}
-            color={GlobalBackgroundColors.primaryColor}
-          >
-            Ruhunu Kumari
-          </Text>
-          <Text
-            fontWeight={"bold"}
-            fontSize={25}
-            color={GlobalBackgroundColors.primaryColor}
-          >
-            Rs.450
-          </Text>
-        </View>
-        {/* Traveling Detail */}
-        <View flexDirection="row" justifyContent="space-between" mt={"10px"}>
-          <Text>Matara</Text>
-          <Image
-            style={{ width: 50, height: 40 }}
-            alt="image"
-            source={require("../../assets/Images/train.png")}
-          />
-          <Text>Colombo Fort</Text>
-        </View>
-        {/* Time Detail */}
-        <View
-          flexDirection={"row"}
-          justifyContent={"space-between"}
-          marginTop={"10px"}
-        >
-          <Text>5.00 Am</Text>
-          <Text>9.00Am</Text>
-        </View>
-      </TouchableOpacity>
+  </Box>
+      <Box flex={2} backgroundColor={'#ffffff'}>
+        <Box flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+        <Heading mt={'5%'}>Colombo - Matara</Heading>
+        <Heading mt={'5%'}>Aug 05 2023 - Aug 08 2023</Heading>
+        </Box>
+      
+      
+      </Box>
+      <Box flex={10} backgroundColor={'#f5f5fa'}>
+      <Booking booking={true}/>
+      <Booking booking={true}/>
+    
+      </Box>
+     
     </View>
+    </DefaultLayout>
+  
   );
 };
 

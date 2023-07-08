@@ -3,7 +3,7 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
-import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain} from './Screens'
+import {LoginScreen, SplashScreen, RegisterScreen, SearchTrain, HomeScreen} from './Screens'
 import {NavigationContainer} from '@react-navigation/native';
 import {LogBox, Settings} from 'react-native'
 import {TrainSearchResult} from './Screens/TrainSearchResult';
@@ -23,14 +23,6 @@ export default function App() {
    <NativeBaseProvider>
     <NavigationContainer>
     <Stack.Navigator initialRouteName='Splash'>
-<<<<<<< Updated upstream
-      <Stack.Screen name="Splash" component={SplashScreen}/>
-      <Stack.Screen name="Login" component={LoginScreen}/>
-      <Stack.Screen name="Register" component={RegisterScreen}/>
-      <Stack.Screen name="SearchTrain" component={SearchTrain}/>
-      <Stack.Screen name="TrainSearchResult" component={TrainSearchResult}/>
-      <Stack.Screen name="BookingSeats" component={BookingSeats}/>
-=======
       <Stack.Screen name="Splash" component={SplashScreen}  options={{
               headerShown: false,
             }}/>
@@ -64,7 +56,6 @@ export default function App() {
               <Stack.Screen name="EditProfile" component={EditProfileComponent}  options={{
                 headerShown: false,
               }}/>
->>>>>>> Stashed changes
     </Stack.Navigator>
     </NavigationContainer>
     
