@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { nav } from "../../Models";
 import { useKeyboardVisible } from "../../hooks";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useForm, Controller } from "react-hook-form";
 import API from "../../utils/API";
-import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -27,6 +25,7 @@ export default () => {
     resolver: yupResolver(validationSchema),
   });
   const [gender, setGender] = useState("Male");
+  const [loading, setLoading] = useState<boolean>(false)
 
   const onSelectGender = (g) => {
     setGender(g);
@@ -37,9 +36,12 @@ export default () => {
     // Handle the form data
     data.gender = gender;
     try {
+      setLoading(true)
       await API.post("/auth/user", data);
+      setLoading(false)
       navigate("Home");
     } catch (err) {
+      setLoading(false)
       console.log(err);
     }
   };
