@@ -37,10 +37,8 @@ export default ()=>{
         </Box>
         <Box flex={7} mx={'3%'}>
             <View>
-                
                  <Input placeholder='fullname' h="40px"/>
             </View>
-            
            <View>
            <Input placeholder='address' h="40px" mt='2%'/>
            </View>
