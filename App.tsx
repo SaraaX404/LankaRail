@@ -11,7 +11,7 @@ import { BookingSeats } from './Screens/BookingSeats';
 const Stack = createStackNavigator();
 
 LogBox.ignoreLogs([
-  'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.'
+  'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',"Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle."
 ])
 
 export default function App() {
