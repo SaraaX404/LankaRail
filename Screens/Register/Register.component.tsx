@@ -26,6 +26,7 @@ export default () => {
   });
   const [gender, setGender] = useState("Male");
   const [loading, setLoading] = useState<boolean>(false)
+  const [authErrors, setAuthErrors] = useState<null | string>(null)
 
   const onSelectGender = (g) => {
     setGender(g);
@@ -42,6 +43,7 @@ export default () => {
       navigate("Home");
     } catch (err) {
       setLoading(false)
+      setAuthErrors('Already Registered, Try Logging in')
       console.log(err);
     }
   };
@@ -170,9 +172,14 @@ export default () => {
           {errors.password && (
             <Text style={{ color: "red" }}>{errors.password.message}</Text>
           )}
+
+{authErrors && (
+            <Text style={{ color: "red" }}>{authErrors}</Text>
+          )}
         </View>
 
-        <Pressable
+        <Button
+         isLoading={loading}
           onPress={handleSubmit(onSubmit)}
           width={200}
           backgroundColor={"#003580"}
@@ -190,7 +197,7 @@ export default () => {
           >
             SignUp
           </Text>
-        </Pressable>
+        </Button>
       </Box>
     </Box>
   );
