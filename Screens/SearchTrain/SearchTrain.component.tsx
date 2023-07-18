@@ -132,6 +132,7 @@ export default () => {
             >
               <Feather name="calendar" size={24} color="black" />
               <DatePicker
+                onConfirm={(e)=> console.log(e)}
                 style={{
                   width: 250,
                   height: 30,
@@ -158,40 +159,9 @@ export default () => {
                 }}
                 selectedBgColor="#0047AB"
                 allowFontScaling={false}
-                placeholder={"Select Your Dates"}
-                mode={"range"}
+                placeholder={"Select Your Date"}
               />
             </Pressable>
-          </View>
-          <View mt={15}>
-            <DropDownPicker
-              open={open3}
-              value={value3}
-              items={items1}
-              setOpen={setOpen3}
-              setValue={setValue3}
-              setItems={setItems1}
-              placeholder="Select Start Time"
-              dropDownDirection="TOP"
-              style={{
-                width: 350,
-              }}
-            />
-          </View>
-          <View mt={15}>
-            <DropDownPicker
-              open={open4}
-              value={value4}
-              items={items1}
-              setOpen={setOpen4}
-              setValue={setValue4}
-              setItems={setItems1}
-              placeholder="Select End Time"
-              dropDownDirection="TOP"
-              style={{
-                width: 350,
-              }}
-            />
           </View>
         </View>
 

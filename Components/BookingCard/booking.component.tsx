@@ -9,10 +9,15 @@ import { nav } from '../../Models'
 
 type PropType = {
     paid?:boolean,
-    booking?:boolean
+    booking?:boolean,
+    train:string,
+    start:string,
+    end:string,
+    startTime:number,
+    endTime:number
 }
 
-export default ({paid, booking}:PropType)=>{
+export default ({paid, booking, train, start, end, startTime, endTime}:PropType)=>{
 
     const { navigate } = useNavigation<nav>();
 
@@ -47,7 +52,7 @@ export default ({paid, booking}:PropType)=>{
         fontSize={25}
         color={GlobalBackgroundColors.primaryColor}
       >
-        Ruhunu Kumari
+        {train}
       </Text>
     {booking === true?(
  <Text
@@ -75,13 +80,13 @@ export default ({paid, booking}:PropType)=>{
       justifyContent={"space-between"}
       mt={"10px"}
     >
-      <Text>Matara</Text>
+      <Text>{start}</Text>
       <Image
         style={{ width: 50, height: 40 }}
         source={require("../../assets/Images/train.png")}
         alt={"image"}
       />
-      <Text>Colombo Fort</Text>
+      <Text>{end}</Text>
     </View>
     {/* Time Detail */}
     <View
@@ -89,8 +94,8 @@ export default ({paid, booking}:PropType)=>{
       justifyContent="space-between"
       marginTop={"10px"}
     >
-      <Text>5.00 Am</Text>
-      <Text>9.00Am</Text>
+      <Text>{new Date(startTime * 1000).toLocaleTimeString()}</Text>
+      <Text>{new Date(endTime * 1000).toLocaleTimeString()}</Text>
     </View>
   </TouchableOpacity>
     )

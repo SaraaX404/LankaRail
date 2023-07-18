@@ -15,7 +15,7 @@ import EditProfileComponent from './Screens/EditProfile/EditProfile.component';
 const Stack = createStackNavigator();
 
 LogBox.ignoreLogs([
-  'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',"Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle."
+  'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',"Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle.","No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first."
 ])
 
 export default function App() {

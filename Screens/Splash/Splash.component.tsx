@@ -1,11 +1,25 @@
 import { Box, Button } from 'native-base'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {nav} from '../../Models'
+import API from '../../utils/API'
 
 
 export default ()=>{
     const {navigate} = useNavigation<nav>()
+
+    const fetchData = async()=>{
+       const res = await API.get('/users/me')
+       if(res?.data?.full_name){
+
+        navigate('Home')
+
+       }
+    }
+
+    useEffect(()=>{
+        fetchData()
+    },[])
 
     const navigateLogin =()=>{
         navigate('Login')
