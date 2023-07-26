@@ -20,28 +20,18 @@ import { DefaultLayout } from "../../Components";
 export default () => {
   const { navigate } = useNavigation<nav>();
   const navigateTrainSearchResult = () => {
-    navigate("TrainSearchResult");
+    navigate("TrainSearchResult", {start:value, end:value1, date:date});
   };
 
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-
+  const [value, setValue] = useState<null | string>(null);
+  const [date, setDate] = useState(null)
   const [open1, setOpen1] = useState(false);
-  const [value1, setValue1] = useState(null);
+  const [value1, setValue1] = useState<null | string>(null);
   const [items, setItems] = useState([
-    { label: "Matara", value: "1" },
-    { label: "Colombo Fort", value: "2" },
+    { label: "Matara", value: "Matara" },
+    { label: "Colombo Fort", value: "Colombo Fort" },
   ]);
-
-  const [open3, setOpen3] = useState(false);
-  const [value3, setValue3] = useState(null);
-  const [open4, setOpen4] = useState(false);
-  const [value4, setValue4] = useState(null);
-  const [items1, setItems1] = useState([
-    { label: "5.00 AM", value: "1" },
-    { label: "9.00 AM", value: "2" },
-  ]);
-
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -132,7 +122,7 @@ export default () => {
             >
               <Feather name="calendar" size={24} color="black" />
               <DatePicker
-                onConfirm={(e)=> console.log(e)}
+                onConfirm={(e)=> setDate(e.currentDate)}
                 style={{
                   width: 250,
                   height: 30,

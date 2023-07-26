@@ -3,7 +3,23 @@ import React from 'react'
 import { DefaultLayout } from '../../Components'
 import { GlobalBackgroundColors, globalShadowBox } from '../../Styles/global'
 import { SafeAreaView } from "react-native";
-export default () => {
+import { RouteProp } from '@react-navigation/native';
+
+
+type RouterParams = {
+  JourneyDetails: {
+      start:string, end:string, endTime:string, startTime:string
+    };
+  };
+  
+type AppProps = {
+    route: RouteProp<RouterParams, 'JourneyDetails'>;
+  };
+
+export default ({route}:AppProps) => {
+  const {
+    params: {start, end, endTime, startTime},
+  } = route;
   return (
     <DefaultLayout>
       <SafeAreaView
@@ -38,7 +54,7 @@ export default () => {
         >
         <Text>From :</Text>
         
-        <Text> Matara</Text>
+        <Text> {start}</Text>
         </View>
         
         <View
@@ -48,7 +64,7 @@ export default () => {
         >
         <Text>To:</Text>
         
-        <Text> Colombo Fort</Text>
+        <Text> {end}</Text>
         </View>
 
         <View

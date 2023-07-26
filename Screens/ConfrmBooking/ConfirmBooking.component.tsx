@@ -2,12 +2,26 @@ import { View, Text,Box,Input,Button, Pressable, } from 'native-base'
 import React from 'react'
 import { DefaultLayout } from '../../Components'
 import { nav } from '../../Models'
-import { useNavigation } from '@react-navigation/native'
+import { RouteProp, useNavigation } from '@react-navigation/native'
 import { useKeyboardVisible } from '../../hooks'
 import { SafeAreaView } from 'react-native'
 import { JourneyDetails } from '../JourneyDetails'
 
-export default () => {
+
+type RouterParams = {
+  ConfirmBooking: {
+      name:string
+    };
+  };
+  
+type AppProps = {
+    route: RouteProp<RouterParams, 'ConfirmBooking'>;
+  };
+
+export default ({route}:AppProps) => {
+    const {
+      params: {name},
+    } = route;
   const {navigate} = useNavigation<nav>()
 
     const keyBoardVisible = useKeyboardVisible()
@@ -30,7 +44,7 @@ export default () => {
         <View>
         <Box flex={1}>
         <Box flex={keyBoardVisible?1:3} flexDirection={'row'} alignItems={'center'} justifyContent={'center'} >
-        <Text fontSize={'24px'}>Contact Details</Text>
+        <Text fontSize={'24px'}>Book {name} </Text>
         </Box>
         <Box flex={7} mx={'3%'} borderColor={"#003580"}>
             <Input  placeholder='Firstname' h="40px"/>

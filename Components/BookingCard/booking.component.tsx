@@ -1,28 +1,50 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { GlobalBackgroundColors, globalShadowBox } from '../../Styles/global'
-import { Image, Text, View } from 'native-base'
+import { Box, Image, Modal, Text, View } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { nav } from '../../Models'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { Marker } from 'react-native-svg'
 
 
 
 type PropType = {
     paid?:boolean,
     booking?:boolean,
-    train:string,
-    start:string,
-    end:string,
-    startTime:number,
-    endTime:number
+    train?:string,
+    start?:string,
+    end?:string,
+    startTime?:number,
+    date?:string,
+    endTime?:number,
+    bookingStatus?: {"availableSeats": number, "bookingSeats": number, "numberOfSeats": number}
+    price?:number,
+    id?:string
 }
 
-export default ({paid, booking, train, start, end, startTime, endTime}:PropType)=>{
 
+
+export default ({paid,id, booking, train, start, end, startTime, endTime, bookingStatus, price,date}:PropType)=>{
+  const [modalVisible, setModalVisible] = React.useState<boolean>(false)
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
+  const openModal = () =>{
+    setModalVisible(true)
+  }
+  
+  const closeModal = () =>{
+    setModalVisible(false)
+  }
     const { navigate } = useNavigation<nav>();
 
     const navigateBookingSeats = () => {
-      navigate("BookingSeats");
+      if(booking){
+        navigate("BookingSeats", {start:start, end:end, startTime, endTime, bookingStatus, price, date,id, train});
+      }else{
+        openModal()
+      }
+      
     };
 
     return(
@@ -41,6 +63,43 @@ export default ({paid, booking, train, start, end, startTime, endTime}:PropType)
       },
     ]}
   >
+          <Modal
+                    isOpen={modalVisible}
+                    onClose={closeModal}
+                    initialFocusRef={initialRef}
+                    finalFocusRef={finalRef}
+                    justifyContent="flex-end"
+                    size="lg"
+                    bottom={"2"}
+                  >
+                    <Modal.Content>
+                      <Modal.CloseButton />
+                      <Modal.Body>
+                        <Box h={"380px"} w="100%">
+                          <MapView
+                            style={{ flex: 1 }}
+                            provider={PROVIDER_GOOGLE}
+                            showsUserLocation
+                            initialRegion={{
+                              latitude: 	6.93548,
+                              longitude:79.84868,
+                              latitudeDelta: 6.93548,
+                              longitudeDelta: 79.84868,
+                            }}
+                          >
+                            <Marker
+                              coordinate={{
+                                latitude: 0.0922,
+                                longitude: 0.0421,
+                              }}
+                              title={train || " "}
+    
+                            />
+                          </MapView>
+                        </Box>
+                      </Modal.Body>
+                    </Modal.Content>
+                  </Modal>
     {/* Train Detail */}
     <View
       flexDirection={"row"}
@@ -61,7 +120,7 @@ export default ({paid, booking, train, start, end, startTime, endTime}:PropType)
  fontSize={25}
  color={GlobalBackgroundColors.primaryColor}
 >
- 450 LKR
+ {price} LKR
 </Text>
     ):(
         <Text
@@ -94,8 +153,8 @@ export default ({paid, booking, train, start, end, startTime, endTime}:PropType)
       justifyContent="space-between"
       marginTop={"10px"}
     >
-      <Text>{new Date(startTime * 1000).toLocaleTimeString()}</Text>
-      <Text>{new Date(endTime * 1000).toLocaleTimeString()}</Text>
+      <Text>{new Date(startTime || 0 * 1000).toLocaleTimeString()}</Text>
+      <Text>{new Date(endTime || 0 * 1000).toLocaleTimeString()}</Text>
     </View>
   </TouchableOpacity>
     )
