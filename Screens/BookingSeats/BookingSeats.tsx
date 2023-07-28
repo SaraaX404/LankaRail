@@ -26,6 +26,7 @@ import {
 import Seat from "../../assets/Images/seats";
 import { DefaultLayout } from "../../Components";
 import API from "../../utils/API";
+import { useQuery } from "react-query";
 type RouterParams = {
   BookingSeats: {
     start: string;
@@ -88,15 +89,23 @@ export default ({ route }: AppProps) => {
     );
   }
 
+  const {refetch} = useQuery('repoData', ()=>
+         API.get('/bookings/user/userID').then((res)=>{
+            return res.data
+         })
+    )
+
   const { navigate } = useNavigation<nav>();
   const confirmbooking = async () => {
-    await API.post("/bookings", {
+   await API.post("/bookings", {
       date: date,
       train: id,
       quantity: parseInt(quantity),
       price: price * parseInt(quantity),
       status: "active",
     });
+    refetch()
+    navigate('Home')
   };
 
   const openModal = () =>{

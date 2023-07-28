@@ -4,6 +4,8 @@ type Args = {
   date?: string | undefined | null;
   startTime?: number | undefined | null;
   endTime?: number | undefined | null;
+  startName?:string | undefined | null;
+  endName?:string | undefined | null;
   price?: number | undefined | null;
   id?: string | undefined | null;
   train?: string | undefined | null;

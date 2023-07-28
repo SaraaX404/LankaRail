@@ -13,14 +13,16 @@ import { RouteProp } from "@react-navigation/native";
 import API from "../../utils/API";
 
 type TrainResult = {
- "_id": string, "bookingStatus": {"availableSeats": number, "bookingSeats": number, "numberOfSeats": number}, "endStation": string, "endTime": number, "name": string, "numberOfSeats": number, "price": number, "startStation": string, "startTime": number, "status": string
+ "_id": string, "bookingStatus": {"availableSeats": number, "bookingSeats": number, "numberOfSeats": number}, "endStation": {name:string}, "endTime": number, "name": string, "numberOfSeats": number, "price": number, "startStation": {name:string}, "startTime": number, "status": string
 }
 
 type RouterParams = {
   TrainSearchResult: {
       start:string,
       end:string,
-      date:string
+      date:string,
+      startName:string,
+      endName:string
     };
   };
   
@@ -31,10 +33,15 @@ type AppProps = {
 const TrainSearchResult = ({route}:AppProps) => {
   const [result, setResult] = useState<TrainResult[]>([])
   const {
-    params: {start, end, date},
+    params: {start, end, date, startName, endName},
   } = route;
 
   const fetchData = async() =>{
+
+    console.log(start)
+    console.log(end)
+
+
     try{
       const res = await API.get(`/trains?startStation=${start}&endStation=${end}&date=${date}`)
       const data = res.data
@@ -65,19 +72,16 @@ const TrainSearchResult = ({route}:AppProps) => {
   <View flex={1}>
       <Box flex={1} backgroundColor={'#f5f5fa'} flexDirection={'row'} alignItems={'center'} justifyContent={'center'} mt={'9%'}>
       <Text fontSize="18px" >Results</Text>
-
   </Box>
       <Box flex={2} backgroundColor={'#ffffff'}>
         <Box flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
-        <Heading mt={'5%'}>{start} - {end}</Heading>
+        <Heading mt={'5%'}>{startName} - {endName}</Heading>
         <Heading mt={'5%'}>{date}</Heading>
         </Box>
-      
-      
       </Box>
       <Box flex={10} backgroundColor={'#f5f5fa'}>
         {result&&result.map((x:TrainResult)=>(
-            <Booking id={x?._id} end={x?.endStation} price={x?.price} start={x?.startStation} endTime={x?.endTime} startTime={x?.startTime} booking={true} train={x?.name} key={x?._id} bookingStatus={x?.bookingStatus} date={date}/>
+            <Booking id={x?._id} end={x?.endStation?.name} price={x?.price} start={x?.startStation?.name} endTime={x?.endTime} startTime={x?.startTime} booking={true} train={x?.name} key={x?._id} bookingStatus={x?.bookingStatus} date={date}/>
         ))}
       </Box>
      

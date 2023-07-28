@@ -5,6 +5,7 @@ import {booking} from './home.types'
 import API from "../../utils/API";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { Marker } from "react-native-svg";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 
 
 export default ()=>{
@@ -13,20 +14,31 @@ export default ()=>{
     const [loading, setLoading] = useState<boolean>(false)
     const [userName, setUserName] = useState<string>("")
 
+    const {isLoading, error, data} = useQuery('repoData', ()=>
+         API.get('/bookings/user/userID').then((res)=>{
+            return res.data
+         })
+    )
+
+
+    useEffect(()=>{
+        if(Array.isArray(data)){
+            setBookings(data)
+        }
+    },[data])
+
+
     const fetchData = async ()=>{
         setLoading(true)
-        const res = await API.get('/bookings/user/userID')
+        
         const userRes = await API.get('/users/me')
-        if(res.data){
-            setBookings(res.data)
-        }
+        
 
         if(userRes?.data?.full_name){
             setUserName(userRes?.data?.full_name)
         }
         setLoading(false)
     }
-
 
     useEffect(()=>{
        fetchData()
@@ -58,7 +70,7 @@ export default ()=>{
          <Box flex={1}  mx={'4%'} mt={'5%'}>
              <Text fontSize={'28px'}>My Bookings</Text>
              {bookings?.map((x:booking)=>(
-                 <Booking key={x?._id} booking={false} paid={true} start={x?.train?.startStation} startTime={x?.train?.startTime} endTime={x?.train?.endTime} end={x?.train?.endStation} train={x?.train?.name} />
+                 <Booking key={x?._id} booking={false} paid={true} start={x?.train?.startStation?.name} startTime={x?.train?.startTime} endTime={x?.train?.endTime} end={x?.train?.endStation?.name} train={x?.train?.name} />
              ))}
          </Box>
 

@@ -10,33 +10,57 @@ import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { nav } from "../../Models";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 
 import { Feather } from "@expo/vector-icons";
 import DatePicker from "react-native-date-ranges";
 import { DefaultLayout } from "../../Components";
+import API from "../../utils/API";
+
+type resType = {
+  label:string,
+  value:string
+}
+
 
 export default () => {
   const { navigate } = useNavigation<nav>();
+  const [value, setValue] = useState<null | string>(null);
+  const [items, setItems] = useState<resType[]>([]);
   const navigateTrainSearchResult = () => {
-    navigate("TrainSearchResult", {start:value, end:value1, date:date});
+    navigate("TrainSearchResult", {start:value, end:value1, date:date, startName:items.find((x)=> x.value == value)?.label, endName:items.find((x)=> x.value == value1)?.label});
   };
 
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<null | string>(null);
+  
   const [date, setDate] = useState(null)
   const [open1, setOpen1] = useState(false);
   const [value1, setValue1] = useState<null | string>(null);
-  const [items, setItems] = useState([
-    { label: "Matara", value: "Matara" },
-    { label: "Colombo Fort", value: "Colombo Fort" },
-  ]);
+  
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
+
+  const fetch = async()=>{
+    const res = await API.get('/station')
+    if(res){
+      if(Array.isArray(res.data)){
+        setItems(res.data)
+      }
+      
+    }
+  }
+
+  useEffect(()=>{
+    console.log("this is items, ***********************", items)
+  },[items])
+
+  useEffect(()=>{
+    fetch()
+  },[])
 
   const hideDatePicker = () => {
     setDatePickerVisibility(false);

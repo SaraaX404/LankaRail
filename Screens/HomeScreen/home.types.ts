@@ -5,8 +5,8 @@ export type booking = {
         "train": {
             "_id": string,
             "name": string,
-            "startStation": string,
-            "endStation": string,
+            startStation: {name:string},
+            endStation: {name:string},
             "startTime":number,
             "endTime":number
         },

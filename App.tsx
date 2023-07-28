@@ -12,7 +12,9 @@ import { ConfirmBooking } from './Screens/ConfrmBooking';
 import { JourneyDetails } from './Screens/JourneyDetails';
 import SettingsComponent from './Screens/Settings/Settings.component';
 import EditProfileComponent from './Screens/EditProfile/EditProfile.component';
+import { QueryClient, QueryClientProvider } from 'react-query';
 const Stack = createStackNavigator();
+const queryClient = new QueryClient();
 
 LogBox.ignoreLogs([
   'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',"Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle.","No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first."
@@ -22,7 +24,8 @@ export default function App() {
   return (
    <NativeBaseProvider>
     <NavigationContainer>
-    <Stack.Navigator initialRouteName='Splash'>
+      <QueryClientProvider client={queryClient}>
+      <Stack.Navigator initialRouteName='Splash'>
       <Stack.Screen name="Splash" component={SplashScreen}  options={{
               headerShown: false,
             }}/>
@@ -57,6 +60,8 @@ export default function App() {
                 headerShown: false,
               }}/>
     </Stack.Navigator>
+      </QueryClientProvider>
+    
     </NavigationContainer>
     
    </NativeBaseProvider>
