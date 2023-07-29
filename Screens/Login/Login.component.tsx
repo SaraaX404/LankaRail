@@ -32,7 +32,7 @@ export default () => {
     setAuthErrors(null)
     try {
       setLoading(true)
-      await API.post('/auth', data)
+      await API.post('/auth/login', data)
       setLoading(false)
       navigate("Home");
     } catch (error) {
