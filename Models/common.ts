@@ -9,6 +9,9 @@ type Args = {
   price?: number | undefined | null;
   id?: string | undefined | null;
   train?: string | undefined | null;
+  full_name:string | undefined;
+  mobile:string | undefined;
+  address:string| undefined;
   bookingStatus?: {"availableSeats": number, "bookingSeats": number, "numberOfSeats": number}
 };
 

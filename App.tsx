@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 const queryClient = new QueryClient();
 
 LogBox.ignoreLogs([
-  'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',"Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle.","No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first."
+  'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',"Require cycles are allowed, but can result in uninitialized values. Consider refactoring to remove the need for a cycle.","No native splash screen registered for given view controller. Call 'SplashScreen.show' for given view controller first.","Sending `onAnimatedValueUpdate` with no listeners registered."
 ])
 
 export default function App() {

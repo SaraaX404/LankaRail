@@ -14,11 +14,13 @@ export default ()=>{
     const [loading, setLoading] = useState<boolean>(false)
     const [userName, setUserName] = useState<string>("")
 
-    const {isLoading, error, data} = useQuery('repoData', ()=>
+    const {isLoading, error, data} = useQuery('myBookings', ()=>
          API.get('/bookings/user/userID').then((res)=>{
             return res.data
          })
     )
+
+    
 
 
     useEffect(()=>{

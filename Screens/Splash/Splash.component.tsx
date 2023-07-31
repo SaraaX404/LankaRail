@@ -9,12 +9,19 @@ export default ()=>{
     const {navigate} = useNavigation<nav>()
 
     const fetchData = async()=>{
-       const res = await API.get('/users/me')
-       if(res?.data?.full_name){
+       try{
+        const res = await API.get('/users/me')
+        if(res?.data?.full_name){
+ 
+         navigate('Home')
+ 
+        }
 
-        navigate('Home')
 
-       }
+       }catch(e){
+        console.log(e)
+       } 
+       
     }
 
     useEffect(()=>{

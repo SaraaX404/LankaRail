@@ -11,6 +11,7 @@ import { nav } from "../../Models";
 import { Booking, DefaultLayout } from "../../Components";
 import { RouteProp } from "@react-navigation/native";
 import API from "../../utils/API";
+import { useQuery } from "react-query";
 
 type TrainResult = {
  "_id": string, "bookingStatus": {"availableSeats": number, "bookingSeats": number, "numberOfSeats": number}, "endStation": {name:string}, "endTime": number, "name": string, "numberOfSeats": number, "price": number, "startStation": {name:string}, "startTime": number, "status": string
@@ -36,33 +37,22 @@ const TrainSearchResult = ({route}:AppProps) => {
     params: {start, end, date, startName, endName},
   } = route;
 
-  const fetchData = async() =>{
-
-    console.log(start)
-    console.log(end)
 
 
-    try{
-      const res = await API.get(`/trains?startStation=${start}&endStation=${end}&date=${date}`)
-      const data = res.data
-      setResult(data)
-    }catch(err){
-      console.log(err)
-    }
-   
-  
-
- 
-
-  }
+  const {data, isLoading, error} = useQuery('bookingHistory', ()=>
+  API.get(`/trains?startStation=${start}&endStation=${end}&date=${date}`).then((res)=>{
+     return res.data
+  })
+  )
 
   useEffect(()=>console.log(result),[result])
 
   useEffect(()=>{
-     fetchData()
-     console.log(result)
+     if(Array.isArray(data)){
+      setResult(data)
+     }
   },[
-    start, end, date
+    data
   ])
 
  

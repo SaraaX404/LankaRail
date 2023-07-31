@@ -4,8 +4,7 @@ import { GlobalBackgroundColors, globalShadowBox } from '../../Styles/global'
 import { Box, Image, Modal, Text, View } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { nav } from '../../Models'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
-import { Marker } from 'react-native-svg'
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 
 
 
@@ -70,16 +69,21 @@ export default ({paid,id, booking, train, start, end, startTime, endTime, bookin
                     finalFocusRef={finalRef}
                     justifyContent="flex-end"
                     size="lg"
-                    bottom={"2"}
+                    
                   >
                     <Modal.Content>
                       <Modal.CloseButton />
                       <Modal.Body>
+                      {/* <Text fontSize={'12px'} color="#ff0000">
+                            Train delayed for 10 minutes 
+                          </Text> */}
                         <Box h={"380px"} w="100%">
+                         
                           <MapView
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
                             showsUserLocation
+                            minZoomLevel={12}
                             initialRegion={{
                               latitude: 	6.93548,
                               longitude:79.84868,
@@ -89,8 +93,8 @@ export default ({paid,id, booking, train, start, end, startTime, endTime, bookin
                           >
                             <Marker
                               coordinate={{
-                                latitude: 0.0922,
-                                longitude: 0.0421,
+                                latitude: 6.93548,
+                                longitude: 79.84868,
                               }}
                               title={train || " "}
     

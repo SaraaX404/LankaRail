@@ -63,6 +63,7 @@ export default ({ route }: AppProps) => {
   for (let i = 0; i < bookingStatus?.availableSeats; i++) {
     availableSeats.push(
       <View
+        key={i}
         style={[
           styles.SeatContainer,
           globalShadowBox,
@@ -89,7 +90,7 @@ export default ({ route }: AppProps) => {
     );
   }
 
-  const {refetch} = useQuery('repoData', ()=>
+  const {refetch} = useQuery('myBookings', ()=>
          API.get('/bookings/user/userID').then((res)=>{
             return res.data
          })
@@ -255,17 +256,18 @@ export default ({ route }: AppProps) => {
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
                             showsUserLocation
+                            minZoomLevel={12}
                             initialRegion={{
                               latitude: 	6.93548,
                               longitude:79.84868,
-                              latitudeDelta: 0.0922,
-                              longitudeDelta: 0.0922,
+                              latitudeDelta: 6.93548,
+                              longitudeDelta: 79.84868,
                             }}
                           >
                             <Marker
                               coordinate={{
-                                latitude: 0.0922,
-                                longitude: 0.0421,
+                                latitude: 6.93548,
+                                longitude: 79.84868,
                               }}
                               title={train}
     
