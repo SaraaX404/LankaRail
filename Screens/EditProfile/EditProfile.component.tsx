@@ -51,7 +51,7 @@ export default ({ route }: AppProps) => {
     })
     )
   const onSubmit = async(values) =>{
-    await API.patch('/users/update', values)
+    await API.post('/users/update', values)
     
     console.log(error)
     refetch()
