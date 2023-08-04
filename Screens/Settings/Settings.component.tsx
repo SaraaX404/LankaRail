@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { DefaultLayout } from '../../Components'
 import { SafeAreaView,StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {Linking} from 'react-native'
  
 
 import {
@@ -53,6 +53,15 @@ export default () => {
   const logout =()=>{
     navigate('Login')
  } 
+
+ const navigateHome = ()=>{
+   navigate('Home')
+ }
+
+
+ const makeCall = ()=>{
+  Linking.openURL(`tel:2323232333`)
+ }
 
  if(isLoading == true){
   return(
@@ -114,13 +123,13 @@ export default () => {
 
       <View style={styles.menuWrapper}>
          
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={navigateHome}>
           <View style={styles.menuItem}>
             <Icon name="train" color="#003580" size={25}/>
             <Text style={styles.menuItemText}>Track Train</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple  >
+        <TouchableRipple onPress={makeCall}  >
           <View style={styles.menuItem}>
             <Icon name="phone" color="#003580" size={25}/>
             <Text style={styles.menuItemText}>Contact Us</Text>
