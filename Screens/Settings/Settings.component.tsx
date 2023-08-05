@@ -121,8 +121,7 @@ export default () => {
           </View>
       </View>
 
-      <View style={styles.menuWrapper}>
-         
+      <View style={styles.menuWrapper}>        
         <TouchableRipple onPress={navigateHome}>
           <View style={styles.menuItem}>
             <Icon name="train" color="#003580" size={25}/>

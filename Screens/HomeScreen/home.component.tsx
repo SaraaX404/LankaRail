@@ -71,8 +71,9 @@ export default ()=>{
          <Box backgroundColor={'#ffffff'} flex={5}>
          <Box flex={1}  mx={'4%'} mt={'5%'}>
              <Text fontSize={'28px'}>My Bookings</Text>
+             {console.log(bookings, "bookings")}
              {bookings?.map((x:booking)=>(
-                 <Booking key={x?._id} booking={false} paid={true} start={x?.train?.startStation?.name} startTime={x?.train?.startTime} endTime={x?.train?.endTime} end={x?.train?.endStation?.name} train={x?.train?.name} />
+                 <Booking key={x?._id} booking={false} paid={x?.status == 'paid'? true:false} start={x?.train?.startStation?.name} startTime={x?.train?.startTime} endTime={x?.train?.endTime} end={x?.train?.endStation?.name} train={x?.train?.name} />
              ))}
          </Box>
 

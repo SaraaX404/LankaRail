@@ -10,6 +10,7 @@ import {
   Modal,
   Box,
 } from "native-base";
+import { Linking } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { TouchableOpacity, StyleSheet, TouchableHighlight } from "react-native";
 import { RouteProp, useNavigation } from "@react-navigation/native";
@@ -98,14 +99,16 @@ export default ({ route }: AppProps) => {
 
   const { navigate } = useNavigation<nav>();
   const confirmbooking = async () => {
-   await API.post("/bookings", {
+  const response =  await API.post("/bookings", {
       date: date,
       train: id,
       quantity: parseInt(quantity),
       price: price * parseInt(quantity),
       status: "active",
     });
+
     refetch()
+    Linking.openURL(`https://lanka-rail-payment.vercel.app?price=${response?.data?.price}&id=${response?.data?._id}`)
     navigate('Home')
   };
 
